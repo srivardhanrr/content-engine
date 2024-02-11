@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-engine-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: content-engine
+  template:
+    metadata:
+      labels:
+        app: content-engine
+    spec:
+      containers:
+      - name: content-engine
+        image: srivardhanrr/content-engine:latest
+        env:
+          - name: PORT
+            value: "8080"
+          - name: WELCOME_MSG
+            value: "Hello, World!"
+        envFrom:
+          - secretRef:
+              name: content-engine-configmap
+        ports:
+        - containerPort: 8080
