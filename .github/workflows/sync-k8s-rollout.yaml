@@ -7,7 +7,7 @@ jobs:
   k8s_apply:
     runs-on: ubuntu-latest
     env:
-      DEPLOYMENT_NAME: ${{ secrets.DEPLOYMENT_NAME || 'content-engine-deployment' }}
+      DEPLOYMENT_NAME: ${{ secrets.DEPLOYMENT_NAME || 'content-engine' }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
