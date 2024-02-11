@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: content-engine-deployment
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: content-engine
@@ -18,6 +18,8 @@ spec:
         env:
           - name: PORT
             value: "8080"
+          - name: VERSION
+            value: "1.0.0"
           - name: WELCOME_MSG
             value: "Hello, World!"
         envFrom:
